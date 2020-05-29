@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:padding="@dimen/padding_4_dp"
+    android:layout_margin="@dimen/padding_4_dp"
+    android:background="@color/color_app_theme_accent"
     android:layout_height="wrap_content">
 
     <TextView
@@ -12,6 +15,7 @@
         tools:text="Quote text"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="@color/color_white"
         />
     <TextView
         android:id="@+id/tvQuoteAuthorItem"
@@ -19,6 +23,7 @@
         android:layout_height="wrap_content"
         tools:text="Author"
         android:textAllCaps="true"
+        android:textColor="@color/color_white"
         />
 
 </LinearLayout>
