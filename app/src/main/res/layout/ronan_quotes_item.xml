@@ -1,24 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    style="@style/QuoteCardStyle"
+    android:layout_margin="@dimen/padding_8_dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvQuoteTextItem"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="@dimen/padding_8_dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Quote text"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        />
-    <TextView
-        android:id="@+id/tvQuoteAuthorItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Author"
-        android:textAllCaps="true"
-        />
+        android:layout_height="wrap_content">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tvQuoteSerialNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_4_dp"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_16_sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvQuoteTextItem"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvQuoteTextItem"
+            tools:text="1." />
+
+        <TextView
+            android:id="@+id/tvQuoteTextItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_8_dp"
+            android:fontFamily="@font/font_regular"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_16_sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvQuoteSerialNumber"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Quote text" />
+
+        <TextView
+            android:id="@+id/tvQuoteAuthorItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_bold"
+            android:textAllCaps="true"
+            android:textColor="@color/text_color"
+            android:gravity="end"
+            android:layout_marginTop="@dimen/padding_8_dp"
+            app:layout_constraintEnd_toEndOf="@id/tvQuoteTextItem"
+            app:layout_constraintStart_toStartOf="@id/tvQuoteTextItem"
+            app:layout_constraintTop_toBottomOf="@id/tvQuoteTextItem"
+            tools:text="- Author" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

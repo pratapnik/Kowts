@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_4_dp">4dp</dimen>
+    <dimen name="bottom_radius_24_dp">24dp</dimen>
+    <dimen name="padding_8_dp">8dp</dimen>
+    <dimen name="text_24_sp">24sp</dimen>
+    <dimen name="text_16_sp">16sp</dimen>
+    <dimen name="margin_12_dp">12dp</dimen>
+    <dimen name="margin_16_dp">16dp</dimen>
+    <dimen name="text_20_sp">20sp</dimen>
+</resources>
