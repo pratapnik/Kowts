@@ -3,19 +3,22 @@ package com.example.kowts.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kowts.R
 import com.example.kowts.data.QuotesDataModel
 import kotlinx.android.synthetic.main.ronan_quotes_item.view.*
 
-class RonanQuotesListAdapter(val quotesList: ArrayList<QuotesDataModel>): RecyclerView.Adapter<RonanQuotesListAdapter.QuoteViewHolder>() {
+class RonanQuotesListAdapter(val quotesList: ArrayList<QuotesDataModel>) :
+    RecyclerView.Adapter<RonanQuotesListAdapter.QuoteViewHolder>() {
 
-    fun updateQuotesList(newDogsList: ArrayList<QuotesDataModel>){
+    var quoteClickListener: QuoteClickListener? = null
+
+    fun updateQuotesList(newDogsList: ArrayList<QuotesDataModel>) {
         quotesList.clear()
         quotesList.addAll(newDogsList)
         notifyDataSetChanged()
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuoteViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.ronan_quotes_item, parent, false)
@@ -25,10 +28,35 @@ class RonanQuotesListAdapter(val quotesList: ArrayList<QuotesDataModel>): Recycl
     override fun getItemCount() = quotesList.size
 
     override fun onBindViewHolder(holder: QuoteViewHolder, position: Int) {
-        holder.view.tvQuoteTextItem.text = quotesList[position].quoteText
-        holder.view.tvQuoteAuthorItem.text = quotesList[position].quoteAuthor
+        var authorName = quotesList[position].quoteAuthor
+        val quoteTextString = quotesList[position].quoteText
+        holder.view.tvQuoteTextItem.text = quoteTextString
+        if (isAuthorAvailable(authorName)) {
+            holder.view.tvQuoteAuthorItem.text = "- ".plus(authorName)
+        } else {
+            authorName = ""
+            holder.view.tvQuoteAuthorItem.visibility = View.GONE
+        }
+        holder.view.tvQuoteSerialNumber.text = (position + 1).toString().plus(".")
+
+        holder.itemView.setOnClickListener {
+            if (authorName != "")
+                quoteClickListener?.onQuoteClickListener(
+                    quoteTextString.plus("\n").plus("- ").plus(authorName)
+                )
+            else
+                quoteTextString?.let { it1 -> quoteClickListener?.onQuoteClickListener(it1) }
+        }
     }
 
-    class QuoteViewHolder(var view: View): RecyclerView.ViewHolder(view)
+    class QuoteViewHolder(var view: View) : RecyclerView.ViewHolder(view)
+
+    private fun isAuthorAvailable(author: String?): Boolean {
+        return author != null
+    }
+
+    interface QuoteClickListener {
+        fun onQuoteClickListener(fullQuoteText: String)
+    }
 
 }

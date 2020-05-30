@@ -1,6 +1,10 @@
 package com.example.kowts.utils
 
+import android.app.Activity
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.util.Log
 import android.view.View
@@ -23,5 +27,18 @@ fun Context.isConnectionAvailable(): Boolean{
         Log.e("Connectivity Exception", e.message)
     }
     return connected
+}
 
+fun Activity.copyText(text:String){
+    val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    val clip = ClipData.newPlainText("joke", text)
+    clipboard.setPrimaryClip(clip)
+}
+
+fun Activity.sendText(text: String){
+    val shareIntent = Intent(Intent.ACTION_SEND)
+    shareIntent.putExtra(Intent.EXTRA_TEXT, text)
+    shareIntent.type = "text/plain"
+    val sendIntent = Intent.createChooser(shareIntent, "Send Joke")
+    startActivity(sendIntent)
 }

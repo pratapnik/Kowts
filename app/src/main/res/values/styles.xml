@@ -5,6 +5,30 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+    </style>
+    
+    <style name="QuoteCardStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/padding_8_dp</item>
+        <item name="cardElevation">@dimen/padding_8_dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <style name="RonanClickableText" parent="Widget.MaterialComponents.TextView">
+        <item name="android:backgroundTint">@color/color_white</item>
+        <item name="fontFamily">@font/font_bold</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/custom_bottom_sheet</item>
     </style>
 
 </resources>
