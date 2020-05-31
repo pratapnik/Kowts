@@ -38,11 +38,12 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/srlQuotesList"
         app:layout_constraintTop_toBottomOf="@id/llAppNameLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="@dimen/padding_8_dp"
         android:layout_marginEnd="@dimen/padding_8_dp"
         android:layout_marginBottom="@dimen/padding_8_dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -83,6 +84,21 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabShuffle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/bottom_radius_24_dp"
+                app:backgroundTint="@color/color_app_theme_accent"
+                app:elevation="@dimen/padding_8_dp"
+                android:src="@drawable/ic_shuffle_icon"
+                android:clickable="true"
+                app:tint="@color/color_white"
+                android:tooltipText="@string/label_shuffle_quotes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:focusable="true" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

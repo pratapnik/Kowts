@@ -1,11 +1,12 @@
 package com.example.kowts.fragments
 
 import android.os.Bundle
-import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,12 +16,12 @@ import com.example.kowts.adapters.RonanQuotesListAdapter
 import com.example.kowts.data.QuotesDataModel
 import com.example.kowts.utils.copyText
 import com.example.kowts.utils.sendText
+import com.example.kowts.utils.setCurrentStatusBarColor
 import com.example.kowts.utils.showSnackBar
 import com.example.kowts.viewmodels.RonanListViewModel
 import com.example.kowts.widgets.RonanQuoteMenuBottomSheet
 import kotlinx.android.synthetic.main.ronan_quotes_list_fragment.*
-import java.util.*
-import kotlin.collections.ArrayList
+
 
 class RonanQuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickListener,
     RonanQuoteMenuBottomSheet.ActionListener {
@@ -58,6 +59,28 @@ class RonanQuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickLis
             srlQuotesList.isRefreshing = false
         }
 
+        fabShuffle.setOnClickListener {
+            rvQuotesList.visibility = View.GONE
+            tvErrorOccured.visibility = View.GONE
+            pbLoadData.visibility = View.VISIBLE
+            ronanListViewModel.refreshShuffle()
+            srlQuotesList.isRefreshing = false
+        }
+
+        view.isFocusableInTouchMode = true
+        view.requestFocus()
+        view.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_BACK && event.action === KeyEvent.ACTION_UP) {
+                fragmentManager?.popBackStack(
+                    "null",
+                    FragmentManager.POP_BACK_STACK_INCLUSIVE
+                )
+                activity?.finish()
+                return@OnKeyListener true
+            }
+            false
+        })
+
         quotesListAdapter.quoteClickListener = this
 
         observeViewModel()
@@ -67,7 +90,6 @@ class RonanQuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickLis
         ronanListViewModel.quotes.observe(viewLifecycleOwner, Observer { quotes ->
             quotes?.let {
                 rvQuotesList.visibility = View.VISIBLE
-//                (quotes as ArrayList<QuotesDataModel>).shuffle()
                 quotesListAdapter.updateQuotesList(quotes as ArrayList<QuotesDataModel>)
             }
         })
@@ -99,11 +121,10 @@ class RonanQuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickLis
     }
 
     override fun onActionListener(action: RonanQuoteBottomSheetAction, fullQuoteText: String) {
-        Log.d("nikhil action", action.name)
         when (action) {
             RonanQuoteBottomSheetAction.COPY_QUOTE -> {
                 activity?.copyText(fullQuoteText)
-                layoutQuotesList.showSnackBar("Quote is copied to clipboard")
+                layoutQuotesList.showSnackBar(resources.getString(R.string.label_quote_copied))
             }
             RonanQuoteBottomSheetAction.SHARE_QUOTE -> {
                 activity?.sendText(fullQuoteText)

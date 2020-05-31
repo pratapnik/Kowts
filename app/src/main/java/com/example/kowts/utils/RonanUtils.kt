@@ -8,6 +8,8 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.util.Log
 import android.view.View
+import android.view.Window
+import com.example.kowts.R
 import com.google.android.material.snackbar.Snackbar
 
 fun View.showSnackBar(snackBarText: String){
@@ -41,4 +43,9 @@ fun Activity.sendText(text: String){
     shareIntent.type = "text/plain"
     val sendIntent = Intent.createChooser(shareIntent, "Send Joke")
     startActivity(sendIntent)
+}
+
+fun Activity.setCurrentStatusBarColor(color: Int){
+    val window: Window? = this.window
+    window?.statusBarColor  = resources.getColor(color)
 }
