@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "160526406831",
+    "firebase_url": "https://kwots-app.firebaseio.com",
+    "project_id": "kwots-app",
+    "storage_bucket": "kwots-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160526406831:android:b6c8af54ae9ff0c7bf305a",
+        "android_client_info": {
+          "package_name": "com.example.kowts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160526406831-nr4qi4v4tfillh9o0oju1k25ggsnvdlu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFtvFpsWP37Ltmg9CR7B3gEmM4KnPqLPg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "160526406831-nr4qi4v4tfillh9o0oju1k25ggsnvdlu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
