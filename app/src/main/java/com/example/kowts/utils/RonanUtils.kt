@@ -41,7 +41,7 @@ fun Activity.sendText(text: String){
     val shareIntent = Intent(Intent.ACTION_SEND)
     shareIntent.putExtra(Intent.EXTRA_TEXT, text)
     shareIntent.type = "text/plain"
-    val sendIntent = Intent.createChooser(shareIntent, "Send Joke")
+    val sendIntent = Intent.createChooser(shareIntent, "Send")
     startActivity(sendIntent)
 }
 
