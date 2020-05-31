@@ -1,4 +1,4 @@
-package com.example.kowts.fragments
+package com.ronan.kowts.fragments
 
 import android.os.Bundle
 import android.view.KeyEvent
@@ -10,14 +10,13 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kowts.R
-import com.example.kowts.actions.RonanQuoteBottomSheetAction
-import com.example.kowts.adapters.RonanQuotesListAdapter
-import com.example.kowts.data.QuotesDataModel
-import com.example.kowts.utils.*
-import com.example.kowts.viewmodels.RonanListViewModel
-import com.example.kowts.widgets.RonanQuoteMenuBottomSheet
-import kotlinx.android.synthetic.main.fragment_ronan_splash.view.*
+import com.ronan.kowts.R
+import com.ronan.kowts.actions.RonanQuoteBottomSheetAction
+import com.ronan.kowts.adapters.RonanQuotesListAdapter
+import com.ronan.kowts.data.QuotesDataModel
+import com.ronan.kowts.utils.*
+import com.ronan.kowts.viewmodels.RonanListViewModel
+import com.ronan.kowts.widgets.RonanQuoteMenuBottomSheet
 import kotlinx.android.synthetic.main.ronan_quotes_list_fragment.*
 import kotlinx.android.synthetic.main.ronan_quotes_list_fragment.view.*
 

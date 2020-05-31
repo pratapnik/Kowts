@@ -1,9 +1,9 @@
-package com.example.kowts.viewmodels
+package com.ronan.kowts.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.kowts.data.QuotesApiService
-import com.example.kowts.data.QuotesDataModel
+import com.ronan.kowts.data.QuotesApiService
+import com.ronan.kowts.data.QuotesDataModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver

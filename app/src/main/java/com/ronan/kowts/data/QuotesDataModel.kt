@@ -1,4 +1,4 @@
-package com.example.kowts.data
+package com.ronan.kowts.data
 
 import com.google.gson.annotations.SerializedName
 

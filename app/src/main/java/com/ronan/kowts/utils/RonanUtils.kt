@@ -1,4 +1,4 @@
-package com.example.kowts.utils
+package com.ronan.kowts.utils
 
 import android.app.Activity
 import android.content.ClipData
@@ -9,7 +9,6 @@ import android.net.ConnectivityManager
 import android.util.Log
 import android.view.View
 import android.view.Window
-import com.example.kowts.R
 import com.google.android.material.snackbar.Snackbar
 
 fun View.showSnackBar(snackBarText: String){

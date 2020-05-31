@@ -1,4 +1,4 @@
-package com.example.kowts.fragments
+package com.ronan.kowts.fragments
 
 import android.os.Bundle
 import android.os.Handler
@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.kowts.R
-import com.example.kowts.utils.isConnectionAvailable
+import com.ronan.kowts.R
+import com.ronan.kowts.utils.isConnectionAvailable
 import kotlinx.android.synthetic.main.fragment_ronan_splash.*
 import kotlinx.android.synthetic.main.fragment_ronan_splash.view.*
 import kotlinx.android.synthetic.main.fragment_ronan_splash.view.btnRefresh

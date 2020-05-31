@@ -1,4 +1,4 @@
-package com.example.kowts.data
+package com.ronan.kowts.data
 
 import io.reactivex.Single
 import retrofit2.http.GET

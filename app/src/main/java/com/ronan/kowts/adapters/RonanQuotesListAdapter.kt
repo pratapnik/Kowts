@@ -1,11 +1,11 @@
-package com.example.kowts.adapters
+package com.ronan.kowts.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kowts.R
-import com.example.kowts.data.QuotesDataModel
+import com.ronan.kowts.R
+import com.ronan.kowts.data.QuotesDataModel
 import kotlinx.android.synthetic.main.ronan_quotes_item.view.*
 
 class RonanQuotesListAdapter(val quotesList: ArrayList<QuotesDataModel>) :

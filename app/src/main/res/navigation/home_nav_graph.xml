@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/quotesListFragment"
-        android:name="com.example.kowts.fragments.RonanQuotesListFragment"
+        android:name="com.ronan.kowts.fragments.RonanQuotesListFragment"
         android:label="fragment_quotes_list"
         tools:layout="@layout/ronan_quotes_list_fragment"
         />
 
     <fragment
         android:id="@+id/ronanSplashFragment"
-        android:name="com.example.kowts.fragments.RonanSplashFragment"
+        android:name="com.ronan.kowts.fragments.RonanSplashFragment"
         android:label="fragment_ronan_splash"
         tools:layout="@layout/fragment_ronan_splash" >
         <action

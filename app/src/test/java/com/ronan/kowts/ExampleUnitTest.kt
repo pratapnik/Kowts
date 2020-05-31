@@ -1,4 +1,4 @@
-package com.example.kowts
+package com.ronan.kowts
 
 import org.junit.Test
 
