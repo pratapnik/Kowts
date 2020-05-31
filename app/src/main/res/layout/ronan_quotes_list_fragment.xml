@@ -85,6 +85,35 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 />
 
+            <TextView
+                android:id="@+id/tvNoInternetList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bottom_radius_24_dp"
+                android:text="@string/label_no_internet"
+                android:textSize="@dimen/text_16_sp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/font_bold"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <Button
+                android:id="@+id/btnRefreshList"
+                style="@style/RonanCustomFilledBlackButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_12_dp"
+                android:text="@string/label_refresh_button"
+                android:textColor="@color/color_white"
+                app:layout_constraintTop_toBottomOf="@id/tvNoInternetList"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="gone" />
+
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabShuffle"
                 android:layout_width="wrap_content"

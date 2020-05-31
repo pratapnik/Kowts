@@ -14,7 +14,7 @@
 
     <fragment
         android:id="@+id/ronanSplashFragment"
-        android:name="com.example.kowts.RonanSplashFragment"
+        android:name="com.example.kowts.fragments.RonanSplashFragment"
         android:label="fragment_ronan_splash"
         tools:layout="@layout/fragment_ronan_splash" >
         <action

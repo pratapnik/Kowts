@@ -10,4 +10,5 @@
     <dimen name="text_20_sp">20sp</dimen>
     <dimen name="text_32_sp">32sp</dimen>
     <dimen name="margin_32_dp">32dp</dimen>
+    <dimen name="stroke_width_2_dp">2dp</dimen>
 </resources>

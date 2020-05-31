@@ -14,13 +14,12 @@ import com.example.kowts.R
 import com.example.kowts.actions.RonanQuoteBottomSheetAction
 import com.example.kowts.adapters.RonanQuotesListAdapter
 import com.example.kowts.data.QuotesDataModel
-import com.example.kowts.utils.copyText
-import com.example.kowts.utils.sendText
-import com.example.kowts.utils.setCurrentStatusBarColor
-import com.example.kowts.utils.showSnackBar
+import com.example.kowts.utils.*
 import com.example.kowts.viewmodels.RonanListViewModel
 import com.example.kowts.widgets.RonanQuoteMenuBottomSheet
+import kotlinx.android.synthetic.main.fragment_ronan_splash.view.*
 import kotlinx.android.synthetic.main.ronan_quotes_list_fragment.*
+import kotlinx.android.synthetic.main.ronan_quotes_list_fragment.view.*
 
 
 class RonanQuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickListener,
@@ -34,7 +33,11 @@ class RonanQuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickLis
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.ronan_quotes_list_fragment, container, false)
+        val view = inflater.inflate(R.layout.ronan_quotes_list_fragment, container, false)
+
+        checkInternet(view)
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,6 +68,10 @@ class RonanQuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickLis
             pbLoadData.visibility = View.VISIBLE
             ronanListViewModel.refreshShuffle()
             srlQuotesList.isRefreshing = false
+        }
+
+        btnRefreshList.setOnClickListener {
+            activity?.recreate()
         }
 
         view.isFocusableInTouchMode = true
@@ -110,6 +117,29 @@ class RonanQuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickLis
                 }
             }
         })
+    }
+
+    private fun checkInternet(view: View){
+        if(activity?.isConnectionAvailable()!!){
+            setListLayoutWithInternet(view)
+        }
+        else{
+            setListLayoutNoInternet(view)
+        }
+    }
+
+    private fun setListLayoutWithInternet(view: View){
+        view.tvNoInternetList.visibility = View.GONE
+        view.btnRefreshList.visibility = View.GONE
+        view.rvQuotesList.visibility = View.VISIBLE
+    }
+
+    private fun setListLayoutNoInternet(view: View){
+        view.tvNoInternetList.visibility = View.VISIBLE
+        view.btnRefreshList.visibility = View.VISIBLE
+        view.tvErrorOccured.visibility = View.GONE
+        view.pbLoadData.visibility = View.GONE
+        view.rvQuotesList.visibility = View.GONE
     }
 
     override fun onQuoteClickListener(fullQuoteText: String) {

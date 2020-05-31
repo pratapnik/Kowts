@@ -8,4 +8,6 @@
     <string name="label_error">Error</string>
     <string name="label_quote_copied">Quote is copied to clipboard</string>
     <string name="label_shuffle_quotes">Shuffle Quotes</string>
+    <string name="label_no_internet">No Internet Available</string>
+    <string name="label_refresh_button">Refresh</string>
 </resources>
