@@ -22,13 +22,17 @@ class RonanSplashFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_ronan_splash, container, false)
 
         if (activity?.isConnectionAvailable()!!) {
-            setSplashLayoutWithInternet(view)
+            view.tvNoInternet.visibility = View.GONE
+            view.btnRefresh.visibility = View.GONE
+            view.tvAppNameSplash.visibility = View.VISIBLE
             val handler = Handler()
             handler.postDelayed({
                 view.findNavController().navigate(R.id.action_ronanSplashFragment_to_quotesListFragment)
             }, 500)
         } else {
-            setSplashLayoutNoInternet(view)
+            view.tvNoInternet.visibility = View.VISIBLE
+            view.btnRefresh.visibility = View.VISIBLE
+            view.tvAppNameSplash.visibility = View.GONE
         }
         return view
     }
@@ -39,17 +43,5 @@ class RonanSplashFragment : Fragment() {
         btnRefresh.setOnClickListener {
             activity?.recreate()
         }
-    }
-
-    private fun setSplashLayoutWithInternet(view: View){
-        view.tvNoInternet.visibility = View.GONE
-        view.btnRefresh.visibility = View.GONE
-        view.tvAppNameSplash.visibility = View.VISIBLE
-    }
-
-    private fun setSplashLayoutNoInternet(view: View){
-        view.tvNoInternet.visibility = View.VISIBLE
-        view.btnRefresh.visibility = View.VISIBLE
-        view.tvAppNameSplash.visibility = View.GONE
     }
 }

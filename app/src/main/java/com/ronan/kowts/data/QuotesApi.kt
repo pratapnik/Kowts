@@ -6,6 +6,6 @@ import retrofit2.http.Url
 
 interface QuotesApi {
 
-    @GET
-    fun getQuotes(@Url url: String): Single<List<QuotesDataModel>>
+    @GET("quotes")
+    fun getQuotes(): Single<List<QuotesDataModel>>
 }

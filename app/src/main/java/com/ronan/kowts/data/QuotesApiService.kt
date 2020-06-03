@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class QuotesApiService {
 
-    val BASE_URL = "https://type.fit/api/quotes/"
+    val BASE_URL = "https://type.fit/api/"
 
     fun getQuotes(): Single<List<QuotesDataModel>> {
         val api = Retrofit.Builder()
@@ -19,7 +19,7 @@ class QuotesApiService {
             .create(QuotesApi::class.java)
         Log.d("nikhil", BASE_URL)
 
-        return api.getQuotes(BASE_URL)
+        return api.getQuotes()
     }
 
 }
