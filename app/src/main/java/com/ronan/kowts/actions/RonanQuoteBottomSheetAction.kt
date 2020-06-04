@@ -1,4 +1,4 @@
-package com.example.kowts.actions
+package com.ronan.kowts.actions
 
 enum class RonanQuoteBottomSheetAction {
     COPY_QUOTE,

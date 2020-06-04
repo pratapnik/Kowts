@@ -1,4 +1,4 @@
-package com.example.kowts
+package com.ronan.kowts
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

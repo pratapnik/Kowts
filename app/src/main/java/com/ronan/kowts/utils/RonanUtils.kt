@@ -1,4 +1,4 @@
-package com.example.kowts.utils
+package com.ronan.kowts.utils
 
 import android.app.Activity
 import android.content.ClipData
@@ -8,6 +8,7 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.util.Log
 import android.view.View
+import android.view.Window
 import com.google.android.material.snackbar.Snackbar
 
 fun View.showSnackBar(snackBarText: String){
@@ -39,6 +40,11 @@ fun Activity.sendText(text: String){
     val shareIntent = Intent(Intent.ACTION_SEND)
     shareIntent.putExtra(Intent.EXTRA_TEXT, text)
     shareIntent.type = "text/plain"
-    val sendIntent = Intent.createChooser(shareIntent, "Send Joke")
+    val sendIntent = Intent.createChooser(shareIntent, "Send")
     startActivity(sendIntent)
+}
+
+fun Activity.setCurrentStatusBarColor(color: Int){
+    val window: Window? = this.window
+    window?.statusBarColor  = resources.getColor(color)
 }
