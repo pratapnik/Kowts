@@ -3,16 +3,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
+// Apply the Performance Monitoring plugin
+apply plugin: 'com.google.firebase.firebase-perf'
 
 android {
-    signingConfigs {
-        debug {
-            storeFile file(kotlin_version)
-            storePassword kotlin_version
-            keyAlias kotlin_version
-            keyPassword kotlin_version
-        }
-    }
     compileSdkVersion 29
 
     defaultConfig {
@@ -20,7 +14,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 4
-        versionName "1.1"
+        versionName "1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -77,6 +71,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.4.2'
     implementation 'com.google.firebase:firebase-crashlytics:17.0.0'
     implementation 'com.google.firebase:firebase-analytics-ktx:17.4.2'
+    // Add the dependency for the Performance Monitoring library
+    implementation 'com.google.firebase:firebase-perf:19.0.7'
 
 
     testImplementation 'junit:junit:4.12'
