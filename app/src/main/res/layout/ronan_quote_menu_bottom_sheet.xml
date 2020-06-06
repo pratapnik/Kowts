@@ -10,8 +10,24 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_close"
         android:layout_gravity="end"
+        android:foreground="?android:attr/selectableItemBackground"
         android:padding="@dimen/margin_16_dp"
         />
+
+    <TextView
+        android:id="@+id/tvReadQuote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="@string/label_read_quote"
+        style="@style/RonanClickableText"
+        android:drawableStart="@drawable/ic_mike"
+        android:drawablePadding="@dimen/margin_16_dp"
+        android:padding="@dimen/margin_16_dp"
+        android:textAllCaps="true"
+        android:textAlignment="textStart"
+        android:textSize="@dimen/text_20_sp"
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/tvCopyQuote"
@@ -21,7 +37,7 @@
         android:text="@string/label_copy_button_title"
         style="@style/RonanClickableText"
         android:drawableStart="@drawable/ic_copy"
-        android:drawablePadding="@dimen/padding_8_dp"
+        android:drawablePadding="@dimen/margin_16_dp"
         android:padding="@dimen/margin_16_dp"
         android:textAllCaps="true"
         android:textAlignment="textStart"
@@ -35,7 +51,7 @@
         android:clickable="true"
         android:focusable="true"
         android:drawableStart="@drawable/ic_share"
-        android:drawablePadding="@dimen/padding_8_dp"
+        android:drawablePadding="@dimen/margin_16_dp"
         android:padding="@dimen/margin_16_dp"
         android:text="@string/label_share_button_title"
         style="@style/RonanClickableText"
