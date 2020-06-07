@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.View
 import android.view.Window
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.ronan_quotes_item.view.*
 
 fun View.showSnackBar(snackBarText: String){
     val snackBar = Snackbar.make(this, snackBarText, Snackbar.LENGTH_LONG)
@@ -47,4 +48,8 @@ fun Activity.sendText(text: String){
 fun Activity.setCurrentStatusBarColor(color: Int){
     val window: Window? = this.window
     window?.statusBarColor  = resources.getColor(color)
+}
+
+fun String.makeQuote(authorName: String): String{
+    return  this.plus("\n").plus("- ").plus(authorName)
 }

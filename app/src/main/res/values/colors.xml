@@ -5,6 +5,9 @@
     <color name="colorPrimaryDark">@color/colorPrimary</color>
     <color name="colorAccent">@color/colorPrimary</color>
     <color name="color_app_theme_accent">@color/colorPrimary</color>
+    <color name="color_app_theme_accent_50_opacity">#80FF3250</color>
     <color name="color_white">#FFFFFF</color>
+    <color name="color_grey">#DCDCDC</color>
     <color name="text_color">#090F21</color>
+    <color name="color_black">#000000</color>
 </resources>

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ronan.kowts.R
 import com.ronan.kowts.actions.RonanQuoteBottomSheetAction
+import com.ronan.kowts.utils.makeQuote
 import kotlinx.android.synthetic.main.ronan_quote_menu_bottom_sheet.*
 import java.util.*
 
@@ -17,7 +18,8 @@ import java.util.*
 class RonanQuoteMenuBottomSheet() : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
     var actionListener: ActionListener? = null
-    lateinit var fullQuoteText: String
+    lateinit var quoteText: String
+    lateinit var quoteAuthor: String
     private var tts: TextToSpeech? = null
 
 
@@ -35,8 +37,14 @@ class RonanQuoteMenuBottomSheet() : BottomSheetDialogFragment(), TextToSpeech.On
             dismiss()
         }
 
+        val fullQuoteText = quoteText.makeQuote(quoteAuthor)
+        val quoteToSpeak = quoteText.plus(" by ").plus(quoteAuthor)
+        tvQuoteDisplayText.text = quoteText
+        tvQuoteDisplayAuthorName.text = "- ".plus(quoteAuthor)
+
         tvReadQuote.setOnClickListener {
-            tts!!.speak(fullQuoteText, TextToSpeech.QUEUE_FLUSH, null,"")
+            tts!!.setSpeechRate(0.75F)
+            tts!!.speak(quoteToSpeak, TextToSpeech.QUEUE_FLUSH, null,"")
         }
         tvCopyQuote.setOnClickListener {
             actionListener?.onActionListener(RonanQuoteBottomSheetAction.COPY_QUOTE, fullQuoteText)
@@ -48,8 +56,9 @@ class RonanQuoteMenuBottomSheet() : BottomSheetDialogFragment(), TextToSpeech.On
         }
     }
 
-    fun setFullQuote(fullQuoteText: String){
-        this.fullQuoteText = fullQuoteText
+    fun setFullQuote(quoteText: String, quoteAuthor: String){
+        this.quoteText = quoteText
+        this.quoteAuthor = quoteAuthor
     }
 
     interface ActionListener {
