@@ -41,11 +41,14 @@ class RonanQuotesListAdapter(val quotesList: ArrayList<QuotesDataModel>) :
 
         holder.itemView.setOnClickListener {
             if (authorName != "")
-                quoteClickListener?.onQuoteClickListener(
-                    quoteTextString.plus("\n").plus("- ").plus(authorName)
-                )
+                quoteTextString?.let { it1 ->
+                    if (authorName != null) {
+                        quoteClickListener?.onQuoteClickListener(
+                            it1, authorName)
+                    }
+                }
             else
-                quoteTextString?.let { it1 -> quoteClickListener?.onQuoteClickListener(it1) }
+                quoteTextString?.let { it1 -> quoteClickListener?.onQuoteClickListener(it1, authorName) }
         }
     }
 
@@ -56,7 +59,7 @@ class RonanQuotesListAdapter(val quotesList: ArrayList<QuotesDataModel>) :
     }
 
     interface QuoteClickListener {
-        fun onQuoteClickListener(fullQuoteText: String)
+        fun onQuoteClickListener(quoteText: String, quoteAuthor: String)
     }
 
 }

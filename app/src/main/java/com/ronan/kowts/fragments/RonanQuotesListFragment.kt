@@ -54,12 +54,15 @@ class RonanQuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickLis
             adapter = quotesListAdapter
         }
 
-        srlQuotesList.setOnRefreshListener {
+        fabGoToTop.setOnClickListener {
+            rvQuotesList.smoothScrollToPosition(0)
+        }
+
+        ivRefresh.setOnClickListener {
             rvQuotesList.visibility = View.GONE
             tvErrorOccured.visibility = View.GONE
             pbLoadData.visibility = View.VISIBLE
             ronanListViewModel.refresh()
-            srlQuotesList.isRefreshing = false
         }
 
         fabShuffle.setOnClickListener {
@@ -67,7 +70,6 @@ class RonanQuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickLis
             tvErrorOccured.visibility = View.GONE
             pbLoadData.visibility = View.VISIBLE
             ronanListViewModel.refreshShuffle()
-            srlQuotesList.isRefreshing = false
         }
 
         btnRefreshList.setOnClickListener {
@@ -145,14 +147,6 @@ class RonanQuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickLis
         view.rvQuotesList.visibility = View.GONE
     }
 
-    override fun onQuoteClickListener(fullQuoteText: String) {
-        ronanQuoteMenuBottomSheet.show(
-            childFragmentManager,
-            resources.getString(R.string.label_open_quote_menu)
-        )
-        ronanQuoteMenuBottomSheet.setFullQuote(fullQuoteText)
-    }
-
     override fun onActionListener(action: RonanQuoteBottomSheetAction, fullQuoteText: String) {
         when (action) {
             RonanQuoteBottomSheetAction.COPY_QUOTE -> {
@@ -163,6 +157,14 @@ class RonanQuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickLis
                 activity?.sendText(fullQuoteText)
             }
         }
+    }
+
+    override fun onQuoteClickListener(quoteText: String, quoteAuthor: String) {
+        ronanQuoteMenuBottomSheet.show(
+            childFragmentManager,
+            resources.getString(R.string.label_open_quote_menu)
+        )
+        ronanQuoteMenuBottomSheet.setFullQuote(quoteText, quoteAuthor)
     }
 
 }
