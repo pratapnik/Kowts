@@ -2,7 +2,6 @@ package com.ronan.kowts.widgets
 
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
-import android.speech.tts.TextToSpeech.OnInitListener
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -37,10 +36,21 @@ class RonanQuoteMenuBottomSheet() : BottomSheetDialogFragment(), TextToSpeech.On
             dismiss()
         }
 
-        val fullQuoteText = quoteText.makeQuote(quoteAuthor)
-        val quoteToSpeak = quoteText.plus(" by ").plus(quoteAuthor)
+        var fullQuoteText: String
+        var quoteToSpeak: String
+        if(quoteAuthor!=""){
+            tvQuoteDisplayAuthorName.visibility = View.VISIBLE
+            fullQuoteText= quoteText.makeQuote(quoteAuthor)
+            quoteToSpeak = quoteText.plus(" by ").plus(quoteAuthor)
+            tvQuoteDisplayAuthorName.text = "- ".plus(quoteAuthor)
+        }
+        else{
+            quoteToSpeak = quoteText
+            fullQuoteText= quoteText
+            tvQuoteDisplayAuthorName.visibility = View.GONE
+            tvQuoteDisplayAuthorName.text = ""
+        }
         tvQuoteDisplayText.text = quoteText
-        tvQuoteDisplayAuthorName.text = "- ".plus(quoteAuthor)
 
         tvReadQuote.setOnClickListener {
             tts!!.setSpeechRate(0.75F)
@@ -67,7 +77,15 @@ class RonanQuoteMenuBottomSheet() : BottomSheetDialogFragment(), TextToSpeech.On
 
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
-            val result = tts!!.setLanguage(Locale.UK)
+
+            val currentLocale = resources.configuration.locale
+            var result: Int
+            result = if(currentLocale.displayCountry == "India"){
+                tts?.setLanguage(Locale("en", "IN"))!!
+
+            } else{
+                tts!!.setLanguage(Locale.US)
+            }
 
             if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                 Log.e("TTS","The Language specified is not supported!")

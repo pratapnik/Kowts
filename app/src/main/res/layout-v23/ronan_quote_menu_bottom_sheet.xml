@@ -41,6 +41,8 @@
             android:layout_height="wrap_content"
             tools:text="-Nikhil"
             android:textAlignment="textEnd"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/padding_8_dp"
             android:textSize="@dimen/text_16_sp"
             android:textColor="@color/color_black"
             android:fontFamily="@font/font_bold"
