@@ -99,21 +99,18 @@ class RonanQuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickLis
         ronanListViewModel.quotes.observe(viewLifecycleOwner, Observer { quotes ->
             quotes?.let {
                 rvQuotesList.visibility = View.VISIBLE
-                Log.d("nikhil", "observeViewModel: "+quotes[0].quoteText)
                 quotesListAdapter.updateQuotesList(quotes as ArrayList<QuotesDataModel>)
             }
         })
 
         ronanListViewModel.quotesError.observe(viewLifecycleOwner, Observer {
             it?.let {
-                Log.d("nikhil", "error: $it")
                 tvErrorOccured.visibility = if (it) View.VISIBLE else View.GONE
             }
         })
 
         ronanListViewModel.loading.observe(viewLifecycleOwner, Observer {
             it?.let {
-                Log.d("nikhil", "error: $it")
                 pbLoadData.visibility = if (it) View.VISIBLE else View.GONE
 
                 if (it) {
