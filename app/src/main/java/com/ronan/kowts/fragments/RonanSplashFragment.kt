@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.ronan.kowts.R
 import com.ronan.kowts.utils.isConnectionAvailable
+import com.ronan.kowts.utils.makeViewGone
+import com.ronan.kowts.utils.makeViewVisible
 import kotlinx.android.synthetic.main.fragment_ronan_splash.*
 import kotlinx.android.synthetic.main.fragment_ronan_splash.view.*
 import kotlinx.android.synthetic.main.fragment_ronan_splash.view.btnRefresh
@@ -22,17 +24,13 @@ class RonanSplashFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_ronan_splash, container, false)
 
         if (activity?.isConnectionAvailable()!!) {
-            view.tvNoInternet.visibility = View.GONE
-            view.btnRefresh.visibility = View.GONE
-            view.tvAppNameSplash.visibility = View.VISIBLE
+            setLayoutWhenInternetAvailable(view)
             val handler = Handler()
             handler.postDelayed({
                 view.findNavController().navigate(R.id.action_ronanSplashFragment_to_quotesListFragment)
             }, 500)
         } else {
-            view.tvNoInternet.visibility = View.VISIBLE
-            view.btnRefresh.visibility = View.VISIBLE
-            view.tvAppNameSplash.visibility = View.GONE
+            setLayoutWhenInternetNotAvailable(view)
         }
         return view
     }
@@ -43,5 +41,17 @@ class RonanSplashFragment : Fragment() {
         btnRefresh.setOnClickListener {
             activity?.recreate()
         }
+    }
+
+    private fun setLayoutWhenInternetAvailable(view: View){
+        view.tvNoInternet.makeViewGone()
+        view.btnRefresh.makeViewGone()
+        view.tvAppNameSplash.makeViewVisible()
+    }
+
+    private fun setLayoutWhenInternetNotAvailable(view: View){
+        view.tvNoInternet.makeViewVisible()
+        view.btnRefresh.makeViewVisible()
+        view.tvAppNameSplash.makeViewGone()
     }
 }

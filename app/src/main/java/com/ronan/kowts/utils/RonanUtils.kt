@@ -12,6 +12,14 @@ import android.view.Window
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.ronan_quotes_item.view.*
 
+fun View.makeViewVisible(){
+    visibility = View.VISIBLE
+}
+
+fun View.makeViewGone(){
+    visibility = View.GONE
+}
+
 fun View.showSnackBar(snackBarText: String){
     val snackBar = Snackbar.make(this, snackBarText, Snackbar.LENGTH_LONG)
     snackBar.show()
