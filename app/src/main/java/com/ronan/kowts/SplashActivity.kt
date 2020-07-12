@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.preference.PreferenceManager
+import com.ronan.kowts.actions.Constants
 import com.ronan.kowts.utils.isConnectionAvailable
 import com.ronan.kowts.utils.makeViewGone
 import com.ronan.kowts.utils.makeViewVisible
@@ -14,6 +17,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        enableDarkMode()
         if (isConnectionAvailable()) {
             setLayoutWhenInternetAvailable()
             val handler = Handler()
@@ -41,5 +45,15 @@ class SplashActivity : AppCompatActivity() {
         tvNoInternet.makeViewVisible()
         btnRefresh.makeViewVisible()
         tvAppNameSplash.makeViewGone()
+    }
+
+    private fun enableDarkMode() {
+        val sharedPreferences =
+            PreferenceManager.getDefaultSharedPreferences(this)
+        if (sharedPreferences.getBoolean(Constants.SettingsStrings.DARK_MODE, false)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
     }
 }

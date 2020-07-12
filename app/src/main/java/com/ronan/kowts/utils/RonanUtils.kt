@@ -7,8 +7,10 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.view.Window
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.ronan_quotes_item.view.*
 
@@ -23,6 +25,12 @@ fun View.makeViewGone(){
 fun View.showSnackBar(snackBarText: String){
     val snackBar = Snackbar.make(this, snackBarText, Snackbar.LENGTH_LONG)
     snackBar.show()
+}
+
+fun Context.showToastAtCenter(toastMsg: String){
+    val toast = Toast.makeText(this, toastMsg, Toast.LENGTH_LONG)
+    toast.setGravity(Gravity.CENTER, 0 , 0)
+    toast.show()
 }
 
 fun Context.isConnectionAvailable(): Boolean{

@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.ronan_quotes_list_fragment.*
 import kotlinx.android.synthetic.main.ronan_quotes_list_fragment.view.*
 
 
-class RonanQuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickListener,
+class QuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickListener,
     RonanQuoteMenuBottomSheet.ActionListener {
 
     private lateinit var ronanListViewModel: RonanListViewModel

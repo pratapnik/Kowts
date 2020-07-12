@@ -7,9 +7,18 @@
 
     <fragment
         android:id="@+id/quotesListFragment"
-        android:name="com.ronan.kowts.fragments.RonanQuotesListFragment"
+        android:name="com.ronan.kowts.fragments.QuotesListFragment"
         android:label="fragment_quotes_list"
         tools:layout="@layout/ronan_quotes_list_fragment"
-        />
+        >
+        <action
+            android:id="@+id/action_quotesListFragment_to_settingsFragment2"
+            app:destination="@id/settingsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment2"
+        android:name="com.example.presence.fragments.SettingsFragment"
+        android:label="SettingsFragment" />
+
 
 </navigation>

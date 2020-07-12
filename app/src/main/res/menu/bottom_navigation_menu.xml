@@ -3,17 +3,17 @@
 
     <item
         android:id="@+id/tab_home"
-        android:title="Home"
-        android:icon="@drawable/ic_refresh"
+        android:title="@string/label_home_menu"
+        android:icon="@drawable/ic_home_icon"
         />
     <item
         android:id="@+id/tab_alarm"
-        android:title="Categories"
-        android:icon="@drawable/ic_refresh"
+        android:title="@string/label_menu_categories"
+        android:icon="@drawable/ic_category_icon"
         />
     <item
         android:id="@+id/tab_bread"
-        android:title="Settings"
-        android:icon="@drawable/ic_refresh"
+        android:title="@string/label_menu_settings"
+        android:icon="@drawable/ic_settings_icon"
         />
 </menu>
