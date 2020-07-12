@@ -14,7 +14,10 @@ import com.ronan.kowts.R
 import com.ronan.kowts.actions.RonanQuoteBottomSheetAction
 import com.ronan.kowts.adapters.RonanQuotesListAdapter
 import com.ronan.kowts.data.QuotesDataModel
-import com.ronan.kowts.utils.*
+import com.ronan.kowts.utils.copyText
+import com.ronan.kowts.utils.isConnectionAvailable
+import com.ronan.kowts.utils.sendText
+import com.ronan.kowts.utils.showSnackBar
 import com.ronan.kowts.viewmodels.RonanListViewModel
 import com.ronan.kowts.widgets.RonanQuoteMenuBottomSheet
 import kotlinx.android.synthetic.main.ronan_quotes_list_fragment.*
@@ -120,22 +123,21 @@ class QuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickListener
         })
     }
 
-    private fun checkInternet(view: View){
-        if(activity?.isConnectionAvailable()!!){
+    private fun checkInternet(view: View) {
+        if (activity?.isConnectionAvailable()!!) {
             setListLayoutWithInternet(view)
-        }
-        else{
+        } else {
             setListLayoutNoInternet(view)
         }
     }
 
-    private fun setListLayoutWithInternet(view: View){
+    private fun setListLayoutWithInternet(view: View) {
         view.tvNoInternetList.visibility = View.GONE
         view.btnRefreshList.visibility = View.GONE
         view.rvQuotesList.visibility = View.VISIBLE
     }
 
-    private fun setListLayoutNoInternet(view: View){
+    private fun setListLayoutNoInternet(view: View) {
         view.tvNoInternetList.visibility = View.VISIBLE
         view.btnRefreshList.visibility = View.VISIBLE
         view.tvErrorOccured.visibility = View.GONE
