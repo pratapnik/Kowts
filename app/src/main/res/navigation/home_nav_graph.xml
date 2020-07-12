@@ -19,6 +19,11 @@
         android:id="@+id/settingsFragment2"
         android:name="com.example.presence.fragments.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.ronan.kowts.fragments.CategoriesFragment"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" />
 
 
 </navigation>

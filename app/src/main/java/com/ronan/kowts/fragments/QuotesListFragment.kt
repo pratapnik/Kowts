@@ -1,7 +1,6 @@
 package com.ronan.kowts.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -65,7 +64,7 @@ class QuotesListFragment : Fragment(), RonanQuotesListAdapter.QuoteClickListener
             ronanListViewModel.refresh()
         }
 
-        fabShuffle.setOnClickListener {
+        btnShuffle.setOnClickListener {
             rvQuotesList.visibility = View.GONE
             tvErrorOccured.visibility = View.GONE
             pbLoadData.visibility = View.VISIBLE
